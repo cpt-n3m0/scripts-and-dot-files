@@ -116,38 +116,19 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
-
-PATH=$PATH:~/Anki/bin:/usr/local/qt5/bin:/media/cpt-n3m0/Storage/android-studio/bin:~/Android/Sdk/tools
-
-export JAVA_HOME="/media/cpt-n3m0/Storage/android-studio/jre"
-export ANDROID_SDK_ROOT="/home/cpt-n3m0/Android/Sdk"
-
-
-paste -d'\t' ~/welcome_logo.txt /tmp/HNnews.headlines
-
-#Show backup log
-echo "$(head -n1 ~/welcome_logo.txt) "'[48;5;228m[38;5;0mBackup Log[0m'
-echo "$(head -n1 ~/welcome_logo.txt) "$(tail -n 1 ~/Scripts/logs/backup.log)
-alias newslinks="cat /tmp/HNnews.links"
-
-
 PS1="\[\e[31;1;36m\]\u\[\e[31;1;91m\]@\[\e[31;1;36m\]\h:\[\e[00m\]\[\e[31;1;91m\]\w\[\e[31;1;36m\]\$\[\e[00m\] "
-
-#if [ "$(ps -e | grep xautolock)" == "" ]
-#then
-#	xautolock -locker "/bin/i3lock -ti /home/cpt-n3m0/Pictures/Wallpapers/lock.png" -corners +000 -cornerdelay 2 &
-#	disown xautolock
-#  fi
-
-alias mac-gen="echo $(echo $FQDN|md5sum|sed 's/^\(..\)\(..\)\(..\)\(..\)\(..\).*$/02:\1:\2:\3:\4:\5/')"
-alias dofus="/home/cpt-n3m0/Dofus"
-alias fixscreen="bash /home/cpt-n3m0/Scripts/screen_config.sh"
-alias lock="i3lock -t -i /home/cpt-n3m0/Pictures/Wallpapers/lock.png"
-
+PATH=$PATH:/home/cpt-n3m0/.local/bin
+REP='/media/shared/rystadenergy.algorithm/RystadEnergy.Algorithm.Apps'
 export TERM=xterm-256color
-export LSID=~/LightsailDefaultKey-eu-west-2.pem
 export KEYEV=$(grep  "Keyboard: device is a keyboard" /var/log/Xorg.0.log | head -n 1 | awk '{ printf $4}')
-~/Scripts/idleTermKiller.sh >> ~/Scripts/logs/itk.out  &
-export HISTTIMEFORMAT="%d/%m/%y %T " 
- 
+export HISTTIMEFORMAT="%d/%m/%y %T "
+
+alias newslinks="cat /tmp/HNnews.links"
+alias ryeconnect="~/RE_vpn_connect.sh"
+alias mac-gen="echo $(echo $FQDN|md5sum|sed 's/^\(..\)\(..\)\(..\)\(..\)\(..\).*$/02:\1:\2:\3:\4:\5/')"
+
+nautilus=$(cat ~/welcome)
+printf "$nautilus\n"
+cat /tmp/HNnews.headlines
+source "$HOME/.cargo/env"
+source /home/cpt-n3m0/alacritty/extra/completions/alacritty.bash
