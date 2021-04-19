@@ -34,7 +34,15 @@ if !has('gui_running')
   set t_Co=256
 endif
 
+"folding settings
+set foldmethod=indent   "fold based on indent
+set foldnestmax=10      "deepest fold is 10 levels
+set nofoldenable
+set foldlevel=1         "this is just what i use
+
 let mapleader = ' '
+nnoremap <Leader>m <C-w>1|
+nnoremap <Leader>M <C-w>|
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -63,6 +71,9 @@ highlight ALEErrorSign ctermbg = Black
 highlight ALEError ctermbg = grey
 highlight ALEWarning ctermbg =grey
 highlight SignColumn ctermbg =Black
+
+highlight Folded ctermfg=Black
+highlight Folded ctermbg=DarkGrey
 "highlight LineNr ctermfg=DarkGrey
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
