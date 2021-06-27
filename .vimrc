@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'mor/etz/gruvbox'
+Plug 'morhetz/gruvbox'
 Plug 'frazrepo/vim-rainbow'
 Plug 'itchyny/lightline.vim'
 Plug 'preservim/nerdtree'
@@ -34,6 +34,7 @@ if !has('gui_running')
   set t_Co=256
 endif
 
+
 "folding settings
 set foldmethod=indent   "fold based on indent
 set foldnestmax=10      "deepest fold is 10 levels
@@ -41,8 +42,8 @@ set nofoldenable
 set foldlevel=1         "this is just what i use
 
 let mapleader = ' '
-nnoremap <Leader>m <C-w>1|
-nnoremap <Leader>M <C-w>|
+nnoremap <F9>m <C-w>1|
+nnoremap <F10>M <C-w>|
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -84,3 +85,6 @@ let g:ale_python_flake8_options='--max-line-length=180'
 let g:ale_fix_on_save = 1
 
 command! Pyrun !python3 '%'
+colorscheme gruvbox
+set bg=dark
+highlight Normal ctermbg=None
