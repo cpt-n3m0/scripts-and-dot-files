@@ -13,7 +13,8 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'sillybun/vim-repl'
 
 call plug#end()
-"au VimEnter *  :exe 'NERDTree' | :exe 'RainbowLoad'  | :exe 'wincmd w'
+
+" setup plugins that run on start, order is important
 au VimEnter * NERDTree | wincmd p
 au BufReadPost,BufNew,BufNewFile * :exe 'RainbowLoad'
 set encoding=UTF-8
@@ -29,6 +30,7 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
 "have the same NERDTree window open in all tabs
 autocmd BufWinEnter * silent NERDTreeMirror
 
+nnoremap <F2> :exe "NERDTreeToggle" <CR>
 
 if !has('gui_running')
   set t_Co=256
@@ -42,26 +44,34 @@ set nofoldenable
 set foldlevel=1         "this is just what i use
 
 let mapleader = ' '
-nnoremap <F9>m <C-w>1|
-nnoremap <F10>M <C-w>|
+
+
+"intuitive window navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <tab> <C-w>w
+
+" open tags definitions in a new hsplit window
 nnoremap <C-w>] <C-w>]<C-w>H<C-w>R
 
+" intuitive window resizing
 nnoremap <silent> <F8> :exe "vertical resize +5" <CR>
 nnoremap <silent> <F5> :exe "vertical resize -5" <CR>
 nnoremap <silent> <F7> :exe "resize +5" <CR>
 nnoremap <silent> <F6> :exe "resize -5" <CR>
 nnoremap <silent> <F6> :exe "resize -5" <CR>
-nnoremap <F2> :exe "NERDTreeToggle" <CR>
+"minimize
+nnoremap <silent> <C-F5> :exe "vertical resize 1" <CR>
+nnoremap <silent> <C-F6> :exe "resize 1" <CR>
+
+
 
 set tabstop=4
 set nu rnu
 set laststatus=2
-set background=light
+
 let g:ale_fixers = {
 \  '*' : ['remove_trailing_lines', 'trim_whitespace'],
 \  'javascript' : ['eslint'],
@@ -78,13 +88,18 @@ highlight Folded ctermbg=DarkGrey
 "highlight LineNr ctermfg=DarkGrey
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
+" ALE error display customization
 let g:ale_sign_error = '⛔️'
 let g:ale_sign_warning = '🔔'
 let g:ale_python_pylint_options='--max-line-length=180'
 let g:ale_python_flake8_options='--max-line-length=180'
 let g:ale_fix_on_save = 1
 
+
+" Run currently open python script from within vim
 command! Pyrun !python3 '%'
+
+" Appearance
 colorscheme gruvbox
 set bg=dark
 highlight Normal ctermbg=None
