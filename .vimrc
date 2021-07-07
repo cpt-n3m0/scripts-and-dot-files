@@ -1,6 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'morhetz/gruvbox'
+Plug 'ghifarit53/tokyonight-vim'
 Plug 'frazrepo/vim-rainbow'
 Plug 'itchyny/lightline.vim'
 Plug 'preservim/nerdtree'
@@ -100,9 +101,16 @@ let g:ale_fix_on_save = 1
 command! Pyrun !python3 '%'
 
 " Appearance
-colorscheme gruvbox
+set termguicolors
+
+let g:tokyonight_style = 'night' " available: night, storm
+let g:tokyonight_enable_italic = 1
+let g:tokyonight_transparent_background = 1
+
+colorscheme tokyonight
+set bg=light
 set bg=dark
-highlight Normal ctermbg=None
+"highlight Normal ctermbg=None
 
 " REPL Python config from repository
 let g:repl_program = {

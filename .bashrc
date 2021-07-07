@@ -117,14 +117,17 @@ if ! shopt -oq posix; then
 fi
 
 PS1="\[\e[31;1;36m\]\u\[\e[31;1;91m\]@\[\e[31;1;36m\]\h:\[\e[00m\]\[\e[31;1;91m\]\w\[\e[31;1;36m\]\$\[\e[00m\] "
-PATH=$PATH:/home/cpt-n3m0/.local/bin
+PATH=$PATH:/home/cpt-n3m0/.local/bin:/home/cpt-n3m0/freesurfer/bin
 export TERM=xterm-256color
 export KEYEV=$(grep  "Keyboard: device is a keyboard" /var/log/Xorg.0.log | head -n 1 | awk '{ printf $4}')
 export HISTTIMEFORMAT="%d/%m/%y %T "
+export FREESURFER_HOME='~/freesurfer'
+
 
 alias newslinks="cat /tmp/HNnews.links"
 alias ryeconnect="~/RE_vpn_connect.sh"
 alias mac-gen="echo $(echo $FQDN|md5sum|sed 's/^\(..\)\(..\)\(..\)\(..\)\(..\).*$/02:\1:\2:\3:\4:\5/')"
+
 
 nautilus=$(cat ~/welcome)
 printf "$nautilus\n"
