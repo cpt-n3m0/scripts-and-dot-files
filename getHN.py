@@ -15,7 +15,7 @@ news = f.text
 nhs = open("/tmp/HNnews.headlines", "w")
 nls = open("/tmp/HNnews.links", "w")
 
-nhs.write("" + "News" + "\n")
+nhs.write("News\n")
 
 for i in range(10):
     result = re.search(".*<span class=\"rank\">" + str(i + 1) + "\.<.*<td class=\"title\"><a href=\"(.*?)\" class=\"storylink\">(.*?)</a>", news)
