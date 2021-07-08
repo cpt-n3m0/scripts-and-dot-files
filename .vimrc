@@ -112,6 +112,8 @@ set bg=light
 set bg=dark
 "highlight Normal ctermbg=None
 
+let g:lightline= {'colorscheme' : 'tokyonight'}
+
 " REPL Python config from repository
 let g:repl_program = {
             \   'python': 'ipython',
