@@ -129,8 +129,14 @@ alias ryeconnect="~/RE_vpn_connect.sh"
 alias mac-gen="echo $(echo $FQDN|md5sum|sed 's/^\(..\)\(..\)\(..\)\(..\)\(..\).*$/02:\1:\2:\3:\4:\5/')"
 
 
-nautilus=$(cat ~/welcome)
-printf "$nautilus\n"
-cat /tmp/HNnews.headlines
+cat ~/welcome
+if test -f /tmp/HNnews.headlines
+then
+    printf "\e[31;1;38mHacker News\e[m\n"
+    cat /tmp/HNnews.headlines
+fi
+bash ~/Scripts/gitStatusNotif.sh
+printf "\e[31;1;38mGit statuses\e[m"
+cat /tmp/gitstatuses
 source "$HOME/.cargo/env"
 source /home/cpt-n3m0/alacritty/extra/completions/alacritty.bash

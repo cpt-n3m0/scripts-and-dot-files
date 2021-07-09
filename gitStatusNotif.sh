@@ -1,6 +1,6 @@
 projectDirs=( "/media/shared/codebase" "/home/cpt-n3m0/projects" )
-out=( )
-outputfile='/tmp/gitstatues'
+notifs=( )
+outputfile='/tmp/gitstatuses'
 
 for d in "${projectDirs[@]}"
 do
@@ -16,20 +16,19 @@ do
       egrep ^.*:$ /tmp/gpso > $tmpout
 
       while read s; do
-        out+=("$s $d/$p")
+        notifs+=("$s $d/$p")
       done < $tmpout
     fi
     cd ..
   done
 done
-
-echo "Git statuses"> /tmp/gitstatuses
-if [ ${#out[@]} -eq 0 ]
+echo > $outputfile
+if [ ${#notifs[@]} -eq 0 ]
 then
-  printf "\tAll projects are in order"
+  printf "  All projects are in order"
 else
-  for s in "${out[@]}"
+  for s in "${notifs[@]}"
   do
-    printf "\t- $s\n" >> $outputfile
+    printf "  * $s\n" >> $outputfile
   done
 fi
